@@ -1,14 +1,14 @@
-package fr.bb2.screen;
+package net.sldt_team.bb2;
 
-import fr.sldt.gameEngine.GameApplication;
-import fr.sldt.gameEngine.controls.ComponentAction;
-import fr.sldt.gameEngine.controls.NormalButton;
-import fr.sldt.gameEngine.ext.Translator;
-import fr.sldt.gameEngine.renderengine.ColorRenderer;
-import fr.sldt.gameEngine.renderengine.FontRenderer;
-import fr.sldt.gameEngine.renderengine.RenderEngine;
-import fr.sldt.gameEngine.renderengine.anim.AnimationFile;
-import fr.sldt.gameEngine.screen.Screen;
+import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.controls.ComponentAction;
+import net.sldt_team.gameEngine.controls.NormalButton;
+import net.sldt_team.gameEngine.ext.Translator;
+import net.sldt_team.gameEngine.renderengine.ColorRenderer;
+import net.sldt_team.gameEngine.renderengine.FontRenderer;
+import net.sldt_team.gameEngine.renderengine.RenderEngine;
+import net.sldt_team.gameEngine.renderengine.anim.AnimationFile;
+import net.sldt_team.gameEngine.screen.Screen;
 
 public class MainMenu extends Screen{
 
@@ -44,7 +44,9 @@ public class MainMenu extends Screen{
 
         fontRenderer.setRenderingColor(new ColorRenderer(82, 177, 255));
         fontRenderer.setRenderingSize(5);
+        fontRenderer.setFontSublined(true);
         fontRenderer.renderShadowedString("BrickBroken[2] - Breakout game using SLDT's GameEngine !", 96, 64, 1.04F);
+        fontRenderer.setFontSublined(false);
 
         testAnim.renderAnimation(renderEngine, 16, 32, 64, 64);
     }

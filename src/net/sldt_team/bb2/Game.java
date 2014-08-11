@@ -1,18 +1,12 @@
-package fr.bb2.screen;
+package net.sldt_team.bb2;
 
-import fr.bb2.Ball;
-import fr.bb2.Brick;
-import fr.bb2.Levels;
-import fr.bb2.input.GameKeyboard;
-import fr.bb2.input.GameMouse;
-import fr.sldt.gameEngine.GameApplication;
-import fr.sldt.gameEngine.input.KeyboardInput;
-import fr.sldt.gameEngine.input.MouseInput;
-import fr.sldt.gameEngine.renderengine.ColorRenderer;
-import fr.sldt.gameEngine.renderengine.FontRenderer;
-import fr.sldt.gameEngine.renderengine.RenderEngine;
-import fr.sldt.gameEngine.screen.GuiScreen;
-import fr.sldt.gameEngine.screen.Screen;
+import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.input.KeyboardInput;
+import net.sldt_team.gameEngine.input.MouseInput;
+import net.sldt_team.gameEngine.renderengine.ColorRenderer;
+import net.sldt_team.gameEngine.renderengine.FontRenderer;
+import net.sldt_team.gameEngine.renderengine.RenderEngine;
+import net.sldt_team.gameEngine.screen.GuiScreen;
 
 import java.util.ArrayList;
 import java.util.List;

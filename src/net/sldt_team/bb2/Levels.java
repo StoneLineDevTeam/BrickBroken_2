@@ -1,4 +1,4 @@
-package fr.bb2;
+package net.sldt_team.bb2;
 
 public class Levels {
 

@@ -1,10 +1,7 @@
-package fr.bb2.input;
+package net.sldt_team.bb2;
 
-import fr.bb2.BrickBroken2;
-import fr.bb2.screen.Game;
-import fr.bb2.screen.GuiIngameMenu;
-import fr.sldt.gameEngine.GameApplication;
-import fr.sldt.gameEngine.input.keyboard.KeyboardHandler;
+import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.input.keyboard.KeyboardHandler;
 import org.lwjgl.input.Keyboard;
 
 import java.io.File;

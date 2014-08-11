@@ -1,11 +1,11 @@
-package fr.bb2.screen;
+package net.sldt_team.bb2;
 
-import fr.sldt.gameEngine.GameApplication;
-import fr.sldt.gameEngine.controls.ComponentAction;
-import fr.sldt.gameEngine.gui.Gui;
-import fr.sldt.gameEngine.gui.GuiButton;
-import fr.sldt.gameEngine.renderengine.FontRenderer;
-import fr.sldt.gameEngine.renderengine.RenderEngine;
+import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.controls.ComponentAction;
+import net.sldt_team.gameEngine.gui.Gui;
+import net.sldt_team.gameEngine.gui.GuiButton;
+import net.sldt_team.gameEngine.renderengine.FontRenderer;
+import net.sldt_team.gameEngine.renderengine.RenderEngine;
 
 public class GuiIngameMenu extends Gui{
     private GuiButton button;

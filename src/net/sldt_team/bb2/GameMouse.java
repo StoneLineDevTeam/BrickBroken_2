@@ -1,8 +1,7 @@
-package fr.bb2.input;
+package net.sldt_team.bb2;
 
-import fr.bb2.screen.Game;
-import fr.sldt.gameEngine.input.mouse.MouseHandler;
-import fr.sldt.gameEngine.input.mouse.MouseHelper;
+import net.sldt_team.gameEngine.input.mouse.MouseHandler;
+import net.sldt_team.gameEngine.input.mouse.MouseHelper;
 
 public class GameMouse implements MouseHandler{
 

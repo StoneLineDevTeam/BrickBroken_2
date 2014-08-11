@@ -1,12 +1,11 @@
-package fr.bb2;
+package net.sldt_team.bb2;
 
-import fr.bb2.screen.MainMenu;
-import fr.sldt.gameEngine.AppSettings;
-import fr.sldt.gameEngine.EngineConstants;
-import fr.sldt.gameEngine.GameApplication;
-import fr.sldt.gameEngine.ext.Translator;
-import fr.sldt.gameEngine.renderengine.assetSystem.AssetType;
-import fr.sldt.gameEngine.renderengine.assetSystem.Type;
+import net.sldt_team.gameEngine.AppSettings;
+import net.sldt_team.gameEngine.EngineConstants;
+import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.ext.Translator;
+import net.sldt_team.gameEngine.renderengine.assetSystem.AssetType;
+import net.sldt_team.gameEngine.renderengine.assetSystem.Type;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
@@ -17,7 +16,6 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 public class BrickBroken2 extends GameApplication{
 
@@ -91,6 +89,8 @@ public class BrickBroken2 extends GameApplication{
     }
 
     public void initGame() {
+        AppSettings settings = new AppSettings(1600, 900, true);
+        updateGameDisplay(settings);
         new Translator("lang");
         gameSettings.showFPS = true;
         gameSettings.isParticlesActivated = true;
@@ -112,9 +112,9 @@ public class BrickBroken2 extends GameApplication{
 
     public static void main(String[] args){
         instance = new BrickBroken2();
-        AppSettings settings = new AppSettings(1600, 900, false, false);
+        AppSettings settings = new AppSettings(1024, 768, false);
         setupThread(instance, "BrickBroken2", settings);
-        if (!EngineConstants.ENGINE_VERSION.equals("V3.0 Dev")){
+        if (!EngineConstants.ENGINE_VERSION.equals("V3.1")){
             System.err.println("Engine version changed ; incompatible version detected, game closed.");
             System.exit(0);
         }
