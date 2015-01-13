@@ -4,9 +4,13 @@ import net.sldt_team.bb2.screen.MainMenu;
 import net.sldt_team.gameEngine.AppSettings;
 import net.sldt_team.gameEngine.EngineConstants;
 import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.IPreloadModifier;
 import net.sldt_team.gameEngine.ext.Translator;
+import net.sldt_team.gameEngine.renderengine.Texture;
 import net.sldt_team.gameEngine.renderengine.assetSystem.AssetType;
 import net.sldt_team.gameEngine.renderengine.assetSystem.Type;
+import net.sldt_team.gameEngine.renderengine.helper.ColorHelper;
+import net.sldt_team.gameEngine.util.GuiUtilities;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
@@ -18,42 +22,32 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.ByteBuffer;
 
-public class BrickBroken2 extends GameApplication{
-
-    private static BrickBroken2 instance;
+public class BrickBroken2 extends GameApplication implements IPreloadModifier {
 
     //Game bg
-    private boolean launch = true;
-    private int bgTicks;
     private float bgScale;
     private int bgScaleTiks;
 
     public BrickBroken2(){
         super("BrickBroken", null, 64F, "#ROOT_FOLDER#", new BrickBrokenExceptionHandler(), "BrickBroken[2]", null);
+
+        setDefaultLang("lang");
+        setHasCustomCursor();
     }
 
     public void renderGameOverlay() {
-        if (!launch){
-            int i = renderEngine.loadTexture("backgrounds/title.png");
-            renderEngine.bindTexture(i);
-            renderEngine.setScaleLevel(1 - bgScale);
-            renderEngine.renderQuad(0, 0, getScreenWidth(), getScreenHeight());
+        if (GuiUtilities.mousePressed()){
+            renderEngine.bindColor(new ColorHelper(0, 0, 255, 200));
+        } else {
+            renderEngine.bindColor(new ColorHelper(133, 133, 133, 200));
         }
+        int[] msPos = GuiUtilities.getMousePosition();
+        renderEngine.setRotationLevel(45);
+        renderEngine.addTranslationMatrix(msPos[0], msPos[1]);
+        renderEngine.renderTriangle(0, 0, 16, 32,  0, true);
     }
 
     public void updateGameOverlay() {
-        if (!launch){
-            bgTicks++;
-            bgScaleTiks++;
-            if (bgScaleTiks >= 4) {
-                bgScale += 0.001F;
-                bgScaleTiks = 0;
-            }
-            if (bgTicks >= 512){
-                launch = true;
-                displayScreen(new MainMenu());
-            }
-        }
     }
 
     public static ByteBuffer captureScreen(int x, int y, int width, int height)
@@ -90,14 +84,11 @@ public class BrickBroken2 extends GameApplication{
     }
 
     public void initGame() {
-        AppSettings settings = new AppSettings(1600, 900, true);
-        updateGameDisplay(settings);
         new Translator("lang");
         gameSettings.showFPS = true;
         gameSettings.isParticlesActivated = true;
-        launch = false;
+        displayScreen(new MainMenu());
         bgScale = 0.0F;
-        bgTicks = 0;
     }
 
     public void exitGame() {
@@ -112,16 +103,26 @@ public class BrickBroken2 extends GameApplication{
     }
 
     public static void main(String[] args){
-        instance = new BrickBroken2();
-        AppSettings settings = new AppSettings(1024, 768, false);
-        setupThread(instance, "BrickBroken2", settings);
-        if (!EngineConstants.ENGINE_VERSION.equals("V3.1")){
+        AppSettings settings = new AppSettings(1600, 900, false);
+        setupThread(new BrickBroken2(), "BrickBroken2", settings);
+        if (!EngineConstants.ENGINE_VERSION.equals("V10")){
             System.err.println("Engine version changed ; incompatible version detected, game closed.");
             System.exit(0);
         }
     }
 
-    public static BrickBroken2 getInstance(){
-        return instance;
+    public void renderPreLoadScreen() {
+        Texture i = renderEngine.loadTexture("backgrounds/title");
+        renderEngine.bindTexture(i);
+        renderEngine.setScaleLevel(1 - bgScale);
+        renderEngine.renderQuad(0, 0, getScreenWidth(), getScreenHeight());
+    }
+
+    public void updatePreLoadScreen() {
+        bgScaleTiks++;
+        if (bgScaleTiks >= 10) {
+            bgScale += 0.001F;
+            bgScaleTiks = 0;
+        }
     }
 }

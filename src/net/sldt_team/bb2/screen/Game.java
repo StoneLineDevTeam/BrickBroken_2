@@ -4,11 +4,12 @@ import net.sldt_team.bb2.*;
 import net.sldt_team.bb2.input.GameKeyboard;
 import net.sldt_team.bb2.input.GameMouse;
 import net.sldt_team.gameEngine.GameApplication;
+import net.sldt_team.gameEngine.screen.components.IScreenComponent;
 import net.sldt_team.gameEngine.input.KeyboardInput;
 import net.sldt_team.gameEngine.input.MouseInput;
-import net.sldt_team.gameEngine.renderengine.ColorRenderer;
 import net.sldt_team.gameEngine.renderengine.FontRenderer;
 import net.sldt_team.gameEngine.renderengine.RenderEngine;
+import net.sldt_team.gameEngine.renderengine.helper.ColorHelper;
 import net.sldt_team.gameEngine.screen.GuiScreen;
 
 import java.util.ArrayList;
@@ -164,23 +165,23 @@ public class Game extends GuiScreen {
     }
 
     public void renderScreen(RenderEngine renderEngine, FontRenderer fontRenderer) {
-        renderEngine.bindColor(ColorRenderer.BLACK);
+        renderEngine.bindColor(ColorHelper.BLACK);
         renderEngine.renderQuad(stickX, GameApplication.getScreenHeight() - 128, 128, 16);
 
         for (Ball b : balls) {
-            renderEngine.bindColor(ColorRenderer.RED);
+            renderEngine.bindColor(ColorHelper.RED);
             renderEngine.renderCircle(b.posX, b.posY, 4);
         }
 
         for (Brick b : bricks) {
             if (b != null) {
-                renderEngine.bindColor(ColorRenderer.BLUE);
+                renderEngine.bindColor(ColorHelper.BLUE);
                 renderEngine.renderQuad(b.posX, b.posY, b.width, b.height);
             }
         }
 
         fontRenderer.unbindColor();
-        fontRenderer.setRenderingColor(ColorRenderer.WHITE);
+        fontRenderer.setRenderingColor(ColorHelper.WHITE);
         fontRenderer.setRenderingSize(5);
         fontRenderer.renderShadowedString(levelName, GameApplication.getScreenWidth() - (fontRenderer.getStringWidth(levelName) * 2), GameApplication.getScreenHeight() - 256, 0F);
     }
@@ -198,5 +199,9 @@ public class Game extends GuiScreen {
     }
 
     public void onExitingScreen() {
+    }
+
+    public void actionPerformed(int i, IScreenComponent iScreenComponent) {
+
     }
 }

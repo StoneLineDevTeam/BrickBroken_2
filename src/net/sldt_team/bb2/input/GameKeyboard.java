@@ -1,16 +1,16 @@
 package net.sldt_team.bb2.input;
 
 import net.sldt_team.bb2.BrickBroken2;
-import net.sldt_team.bb2.GuiIngameMenu;
+import net.sldt_team.bb2.gui.GuiIngameMenu;
 import net.sldt_team.bb2.screen.Game;
 import net.sldt_team.gameEngine.GameApplication;
-import net.sldt_team.gameEngine.input.keyboard.KeyboardHandler;
+import net.sldt_team.gameEngine.input.keyboard.IKeyboardHandler;
 import org.lwjgl.input.Keyboard;
 
 import java.io.File;
 import java.nio.ByteBuffer;
 
-public class GameKeyboard implements KeyboardHandler {
+public class GameKeyboard implements IKeyboardHandler {
 
     private Game gameScreen;
 

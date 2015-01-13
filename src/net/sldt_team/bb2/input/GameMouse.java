@@ -1,10 +1,10 @@
 package net.sldt_team.bb2.input;
 
 import net.sldt_team.bb2.screen.Game;
-import net.sldt_team.gameEngine.input.mouse.MouseHandler;
+import net.sldt_team.gameEngine.input.mouse.IMouseHandler;
 import net.sldt_team.gameEngine.input.mouse.MouseHelper;
 
-public class GameMouse implements MouseHandler{
+public class GameMouse implements IMouseHandler {
 
     private Game gameScreen;
 
